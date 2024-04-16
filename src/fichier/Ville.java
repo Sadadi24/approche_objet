@@ -1,6 +1,6 @@
 package fichier;
 
-public class Ville {
+public class Ville implements Comparable<Ville> {
 	private String nom ;
 	private String departement;
 	private String region ;
@@ -10,6 +10,20 @@ public class Ville {
 		this.departement = departement;
 		this.region = region;
 		this.population = population;
+	}
+	@Override
+	public int compareTo(Ville autre) {
+		// trie par nom de ville
+		//return this.nom.compareTo(autre.getPopulation());
+		
+		// tie par le nombres de population
+		if(this.population > autre.getPopulation()) {
+			return 1;
+		}else if(this.population < autre.getPopulation()) {
+			return -1;
+					
+		}
+		return 0;
 	}
 	@Override
 	public String toString() {
@@ -43,5 +57,6 @@ public class Ville {
 	public void setPopulation(int population) {
 		this.population = population;
 	}
+	
 
 }

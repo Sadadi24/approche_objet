@@ -1,5 +1,7 @@
 package listes;
 
+import java.util.Objects;
+
 public class Ville {
 	 private String nom;
 	    private int nbHabitants;
@@ -23,6 +25,23 @@ public class Ville {
 
 		public void setNbHabitants(int nbHabitants) {
 			this.nbHabitants = nbHabitants;
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(nbHabitants, nom);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Ville other = (Ville) obj;
+			return nbHabitants == other.nbHabitants && Objects.equals(nom, other.nom);
 		}
 
 }
